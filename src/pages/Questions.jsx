@@ -3,7 +3,12 @@ import getQuestions from "../api";
 import Question from "../components/Question";
 
 function Quiz() {
+  // State
   const [questions, setQuestions] = useState([]);
+  const [results, setResults] = useState(null);
+
+  // Dervied
+  const correctAnswers = questions.map((question) => question.correct_answer);
 
   useEffect(() => {
     let cancelled = false;
@@ -25,7 +30,11 @@ function Quiz() {
     event.preventDefault();
     const formData = new FormData(event.target);
     const answers = Object.fromEntries(formData.entries());
-    console.log(answers);
+    const userAnswers = [...Object.values(answers)];
+    const numCorrect = userAnswers.filter((answer) =>
+      correctAnswers.includes(answer)
+    ).length;
+    setResults(numCorrect);
   }
 
   return (
