@@ -1,4 +1,4 @@
-function Question({ question, questionNum }) {
+function Question({ question, questionNum, userAnswer }) {
   const allAnswers = [...question.incorrect_answers, question.correct_answer];
   const radioEls = allAnswers.map((item, index) => {
     return (
@@ -8,6 +8,8 @@ function Question({ question, questionNum }) {
       </div>
     );
   });
+
+  console.log(userAnswer);
 
   return (
     <div>
