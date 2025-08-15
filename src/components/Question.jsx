@@ -22,7 +22,7 @@ function Question({ question, questionNum, userAnswer, gameDone }) {
           name={questionNum}
           id={answer}
           value={answer}
-          required="true"
+          required={true}
         />
         <label htmlFor={answer} className={getAnswerClass(answer)}>
           {decode(answer, { level: "html5" })}
