@@ -7,6 +7,8 @@ function Quiz() {
   const [questions, setQuestions] = useState([]);
   const [results, setResults] = useState(null);
 
+  console.log(results);
+
   // Dervied
   const correctAnswers = questions.map((question) => question.correct_answer);
 
@@ -31,9 +33,9 @@ function Quiz() {
     const formData = new FormData(event.target);
     const answers = Object.fromEntries(formData.entries());
     const userAnswers = [...Object.values(answers)];
-    const numCorrect = userAnswers.filter((answer) =>
-      correctAnswers.includes(answer)
-    ).length;
+    const numCorrect = userAnswers.reduce((acc, answer, index) => {
+      return acc + (answer === correctAnswers[index] ? 1 : 0);
+    }, 0);
     setResults(numCorrect);
   }
 
