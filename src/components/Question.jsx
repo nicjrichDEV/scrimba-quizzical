@@ -1,3 +1,5 @@
+import { decode } from "html-entities";
+
 function Question({ question, questionNum, userAnswer }) {
   const allAnswers = [...question.incorrect_answers, question.correct_answer];
   const radioEls = allAnswers.map((item, index) => {
@@ -15,7 +17,7 @@ function Question({ question, questionNum, userAnswer }) {
                 : null,
           }}
         >
-          {item}
+          {decode(item, { level: "html5" })}
         </label>
       </div>
     );
@@ -23,7 +25,7 @@ function Question({ question, questionNum, userAnswer }) {
 
   return (
     <div>
-      <h3>{question.question}</h3>
+      <h3>{decode(question.question, { level: "html5" })}</h3>
       <fieldset>{radioEls}</fieldset>
     </div>
   );
