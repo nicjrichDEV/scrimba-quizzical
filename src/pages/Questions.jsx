@@ -7,12 +7,11 @@ function Quiz() {
   const [questions, setQuestions] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
 
-  // Dervied
+  // Derived
   const correctAnswers = questions.map((question) => question.correct_answer);
   const numCorrect = userAnswers.reduce((acc, answer, index) => {
     return acc + (answer === correctAnswers[index] ? 1 : 0);
   }, 0);
-  console.log(`Correct Answers: ${numCorrect}`);
 
   useEffect(() => {
     let cancelled = false;

@@ -4,12 +4,22 @@ function Question({ question, questionNum, userAnswer }) {
     return (
       <div key={index}>
         <input type="radio" name={questionNum} id={item} value={item} />
-        <label htmlFor={item}>{item}</label>
+        <label
+          htmlFor={item}
+          style={{
+            backgroundColor:
+              userAnswer === item
+                ? userAnswer === question.correct_answer
+                  ? "green"
+                  : "red"
+                : null,
+          }}
+        >
+          {item}
+        </label>
       </div>
     );
   });
-
-  console.log(userAnswer);
 
   return (
     <div>
