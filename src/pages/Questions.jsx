@@ -6,6 +6,7 @@ function Quiz() {
   // State
   const [questions, setQuestions] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
+  const [gameDone, setGameDone] = useState(false);
 
   // Derived
   const correctAnswers = questions.map((question) => question.correct_answer);
@@ -34,6 +35,7 @@ function Quiz() {
     const formData = new FormData(event.target);
     const answers = Object.fromEntries(formData.entries());
     setUserAnswers([...Object.values(answers)]);
+    setGameDone(true);
   }
 
   return (
@@ -49,6 +51,7 @@ function Quiz() {
               question={question}
               questionNum={index}
               userAnswer={userAnswers[index]}
+              gameDone={gameDone}
             />
           );
         })}

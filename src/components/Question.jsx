@@ -1,23 +1,25 @@
 import { decode } from "html-entities";
 
-function Question({ question, questionNum, userAnswer }) {
+function Question({ question, questionNum, userAnswer, gameDone }) {
   const allAnswers = [...question.incorrect_answers, question.correct_answer];
-  const radioEls = allAnswers.map((item, index) => {
+
+  const getAnswerClass = (answer) => {
+    if (!gameDone || !userAnswer) return;
+
+    if (answer === question.correct_answer) return "correct-answer";
+
+    if (userAnswer === answer && answer !== question.correct_answer)
+      return "incorrect-answer";
+
+    return "";
+  };
+
+  const radioEls = allAnswers.map((answer, index) => {
     return (
       <div key={index}>
-        <input type="radio" name={questionNum} id={item} value={item} />
-        <label
-          htmlFor={item}
-          style={{
-            backgroundColor:
-              userAnswer === item
-                ? userAnswer === question.correct_answer
-                  ? "green"
-                  : "red"
-                : null,
-          }}
-        >
-          {decode(item, { level: "html5" })}
+        <input type="radio" name={questionNum} id={answer} value={answer} />
+        <label htmlFor={answer} className={getAnswerClass(answer)}>
+          {decode(answer, { level: "html5" })}
         </label>
       </div>
     );

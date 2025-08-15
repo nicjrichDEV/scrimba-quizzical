@@ -38,3 +38,13 @@ body {
   bottom: 0;
   left: 0;
 }
+
+.correct-answer {
+  background-color: #4caf50;
+  color: white;
+}
+
+.incorrect-answer {
+  background-color: #f44336;
+  color: white;
+}
