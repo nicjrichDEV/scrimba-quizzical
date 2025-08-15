@@ -11,10 +11,18 @@ function App() {
     setPage("quiz");
   }
 
+  function handleNewGame() {
+    setPage("home");
+  }
+
   return (
     <>
       <img className="blob-right" src={blogRight} aria-hidden="true" />
-      {page === "home" ? <Start onClick={handlePage} /> : <Questions />}
+      {page === "home" ? (
+        <Start onClick={handlePage} />
+      ) : (
+        <Questions onClick={handleNewGame} />
+      )}
       <img className="blob-left" src={blobLeft} aria-hidden="true" />
     </>
   );

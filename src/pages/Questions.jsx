@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import getQuestions from "../api";
 import Question from "../components/Question";
 
-function Quiz() {
+function Quiz({ onClick }) {
   // State
   const [questions, setQuestions] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
@@ -43,8 +43,6 @@ function Quiz() {
       <form onSubmit={checkAnswers}>
         {questions.map((question, index) => {
           // TODO: Figure out a way to mix incorrect and correct answers together randomly
-          // TODO: Play again function return to Start page.
-          // TODO: Add HTML Entities library
           return (
             <Question
               key={index}
@@ -55,7 +53,12 @@ function Quiz() {
             />
           );
         })}
-        <button type="submit">Check Answers</button>
+        {gameDone ? <p>Num correct {numCorrect}/5</p> : null}
+        {gameDone ? (
+          <button onClick={onClick}>New Game</button>
+        ) : (
+          <button type="submit">Check Answers</button>
+        )}
       </form>
     </main>
   );

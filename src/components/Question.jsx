@@ -17,7 +17,13 @@ function Question({ question, questionNum, userAnswer, gameDone }) {
   const radioEls = allAnswers.map((answer, index) => {
     return (
       <div key={index}>
-        <input type="radio" name={questionNum} id={answer} value={answer} />
+        <input
+          type="radio"
+          name={questionNum}
+          id={answer}
+          value={answer}
+          required="true"
+        />
         <label htmlFor={answer} className={getAnswerClass(answer)}>
           {decode(answer, { level: "html5" })}
         </label>
