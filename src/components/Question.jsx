@@ -2,6 +2,7 @@ import { decode } from "html-entities";
 
 function Question({ question, questionNum, userAnswer, gameDone }) {
   const allAnswers = [...question.incorrect_answers, question.correct_answer];
+  const shuffled = allAnswers.sort(() => Math.random() - 0.5);
 
   const getAnswerClass = (answer) => {
     if (!gameDone || !userAnswer) return;
@@ -14,9 +15,9 @@ function Question({ question, questionNum, userAnswer, gameDone }) {
     return "";
   };
 
-  const radioEls = allAnswers.map((answer, index) => {
+  const radioEls = shuffled.map((answer) => {
     return (
-      <div key={index}>
+      <div key={answer}>
         <input
           type="radio"
           name={questionNum}
