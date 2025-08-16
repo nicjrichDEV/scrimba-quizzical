@@ -1,8 +1,11 @@
 import { decode } from "html-entities";
+import { useMemo } from "react";
 
 function Question({ question, questionNum, userAnswer, gameDone }) {
-  const allAnswers = [...question.incorrect_answers, question.correct_answer];
-  const shuffled = allAnswers.sort(() => Math.random() - 0.5);
+  const shuffled = useMemo(() => {
+    const allAnswers = [...question.incorrect_answers, question.correct_answer];
+    return allAnswers.sort(() => Math.random() - 0.5);
+  }, [question]);
 
   const getAnswerClass = (answer) => {
     if (!gameDone || !userAnswer) return;

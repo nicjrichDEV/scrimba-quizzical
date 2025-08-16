@@ -53,16 +53,20 @@ function Quiz({ onClick }) {
             />
           );
         })}
-        {gameDone ? <p>Num correct {numCorrect}/5</p> : null}
-        {gameDone ? (
-          <button className="btn" onClick={onClick}>
-            New Game
-          </button>
-        ) : (
-          <button className="btn" type="submit">
-            Check Answers
-          </button>
-        )}
+        <div className="output">
+          {gameDone ? (
+            <p className="results">Num correct {numCorrect}/5</p>
+          ) : null}
+          {gameDone ? (
+            <button className="btn" onClick={onClick}>
+              New Game
+            </button>
+          ) : (
+            <button className="btn" type="submit">
+              Check Answers
+            </button>
+          )}
+        </div>
       </form>
     </main>
   );

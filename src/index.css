@@ -174,3 +174,12 @@ input[type="radio"]:checked + label.incorrect-answer {
   font-weight: 600;
   padding: 0 24px;
 }
+
+.output {
+  display: flex;
+  gap: 24px;
+}
+
+.results {
+  font-weight: 600;
+}
