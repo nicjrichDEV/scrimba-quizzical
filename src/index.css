@@ -16,6 +16,7 @@
 }
 
 body {
+  font-family: "Karla", sans-serif;
   position: relative;
   margin: 0;
   min-width: 320px;
@@ -25,6 +26,27 @@ body {
   justify-content: center;
   align-items: center;
   overscroll-behavior: none;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #293264;
+}
+
+.home-title {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.home-description {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+}
+
+button {
+  font-family: inherit;
 }
 
 .blob-right {
@@ -39,12 +61,116 @@ body {
   left: 0;
 }
 
-.correct-answer {
-  background-color: #4caf50;
-  color: white;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-.incorrect-answer {
-  background-color: #f44336;
+form > div:not(:last-child)::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin: 12px 0;
+  border-radius: 2px;
+  background-color: #293264;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+form h3 {
+  font-size: 1rem;
+  max-width: 642px;
+  line-height: 20px;
+}
+
+/* Question styling */
+fieldset {
+  margin-top: 8px;
+  border: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+}
+
+/* Hide default radio button */
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Style labels as buttons */
+label {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border: 1px solid #4d5b9e;
+  border-radius: 12px;
+  background-color: white;
+  color: #293264;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  user-select: none;
+}
+
+/* Hover state */
+label:hover {
+  border-color: #d6dbf5;
+  background-color: #f5f7fb;
+}
+
+/* Selected state */
+input[type="radio"]:checked + label {
+  background-color: #d6dbf5;
+  border-color: #d6dbf5;
+  color: #293264;
+}
+
+input[type="radio"]:disabled + label {
+  opacity: 0.5;
+}
+
+input[type="radio"]:disabled + label:hover {
+  background-color: white;
+  border: 1px solid #4d5b9e;
+}
+
+/* Game over states take precedence */
+label.correct-answer,
+input[type="radio"]:checked + label.correct-answer {
+  background-color: #94d7a2;
+  border-color: #94d7a2;
+  color: #293264;
+  opacity: 0.75;
+}
+
+label.incorrect-answer,
+input[type="radio"]:checked + label.incorrect-answer {
+  background-color: #f8bcbc;
+  border-color: #f8bcbc;
+  color: #293264;
+  opacity: 0.75;
+}
+
+.btn {
+  align-self: center;
+  height: 56px;
+  background-color: #4d5b9e;
   color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 20px;
+  letter-spacing: -1px;
+  font-weight: 600;
+  padding: 0 24px;
 }

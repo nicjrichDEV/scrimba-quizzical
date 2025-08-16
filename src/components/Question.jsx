@@ -23,6 +23,7 @@ function Question({ question, questionNum, userAnswer, gameDone }) {
           id={answer}
           value={answer}
           required={true}
+          disabled={gameDone}
         />
         <label htmlFor={answer} className={getAnswerClass(answer)}>
           {decode(answer, { level: "html5" })}

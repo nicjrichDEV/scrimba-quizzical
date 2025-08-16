@@ -55,9 +55,13 @@ function Quiz({ onClick }) {
         })}
         {gameDone ? <p>Num correct {numCorrect}/5</p> : null}
         {gameDone ? (
-          <button onClick={onClick}>New Game</button>
+          <button className="btn" onClick={onClick}>
+            New Game
+          </button>
         ) : (
-          <button type="submit">Check Answers</button>
+          <button className="btn" type="submit">
+            Check Answers
+          </button>
         )}
       </form>
     </main>
